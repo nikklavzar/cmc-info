@@ -1,0 +1,2 @@
+# cmc-info
+CoinMarketCap API
