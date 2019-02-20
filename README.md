@@ -1,6 +1,6 @@
 # cmc-info
 CoinMarketCap API
--> npm i cmc-info
+> npm i cmc-info
 
 For getting multiple values at the same time, use options *none* or 'quote',
 this way you only need 1 API call for all values.
