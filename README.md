@@ -1,4 +1,4 @@
-# cmc-info
+# CoinMarketCap API interface (cmc-info)
 CoinMarketCap API
 > npm i cmc-info
 
