@@ -9,7 +9,7 @@ this way you only need 1 API call for all values.
 For getting single values, you can use my pre-made function options.
 See usage below.
 
-requestCoin options:
+# requestCoin options:
   - *none*
   ```
  { 
