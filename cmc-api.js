@@ -1,15 +1,14 @@
 const rp = require('request-promise');
 
-class cmc-api {
+class cmc_api {
 
 	constructor() {
-		this.API_KEY = 'YOUR_API_KEY'; // https://pro.coinmarketcap.com/account
+		this.API_KEY = '32b23d4d-755c-441d-a40a-2f9e59e04eca'; // https://pro.coinmarketcap.com/account
 		this.API_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency'; // sandbox: https://sandbox.coinmarketcap.com/v1/cryptocurrency
 
 		this.CURRENCY = 'USD'; // https://pro.coinmarketcap.com/api/v1/#section/Standards-and-Conventions
 		this.DEFAULT_TOP_NUMBER = 10; // up to 100 coins ~ 1 API token
 		this.DEFAULT_OPTION = '';	// see options at the end of this file
-		this.LOG_API_ERRORS = true; // log api errors in console
 		this.LOG_API_RESPONSE = true; // log response data in console
 	}
 
@@ -29,14 +28,14 @@ class cmc-api {
 			gzip: true,
 		};
 
-		rp(requestOptions)
-			.then(response => {
-				this.dumpData(response['data']);
-		})
-		.catch(err => {
-			if(this.LOG_API_ERRORS) {
-				console.error(err);
-			}
+		return new Promise((resolve, reject) => {
+			rp(requestOptions)
+				.then(response => {
+					resolve(response['data']);
+				})
+				.catch(err => {
+					reject(err);
+				});
 		});
 	}
 
@@ -58,15 +57,15 @@ class cmc-api {
 			gzip: true,
 		};
 
-		rp(requestOptions)
-			.then(response => {
-				this.dumpData(response['data'][rank-1]);
-			})
-			.catch(err => {
-				if(this.LOG_API_ERRORS) {
-					console.error(err);
-				}
-			});
+		return new Promise((resolve, reject) => {
+			rp(requestOptions)
+				.then(response => {
+					resolve(response['data'][rank-1]);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
 	}
 
 	requestCoin(symbol='BTC', option=this.DEFAULT_OPTION) {
@@ -82,38 +81,30 @@ class cmc-api {
 			gzip: true,
 		};
 
-	  rp(requestOptions)
-		.then(response => {
-			if(option == '') {
-				this.dumpData(response['data'][symbol]);
-			} else if (option == 'id' || option == 'name' || option == 'symbol' || option == 'slug' || option == 'circulating_supply' || option == 'total_supply' || option == 'max_supply' || option == 'date_added' || option == 'num_market_pairs' || option == 'tags' || option == 'platform' || option == 'cmc_rank' || option == 'last_updated') {
-				this.dumpData(response['data'][symbol][option]);
-			} else if (option == 'quote') {
-				this.dumpData(response['data'][symbol]['quote'][this.CURRENCY]);
-			} else if (option == 'price' || option == 'volume_24h' || option == 'percent_change_1h' || option == 'percent_change_24h' || option == 'percent_change_7d' || option == 'market_cap') {
-				this.dumpData(response['data'][symbol]['quote'][this.CURRENCY][option]);
-			} else {
-				console.log('No such option (' + option + ').');
-			}
-		})
-		.catch(err => {
-			if(this.LOG_API_ERRORS) {
-				console.error(err);
-			}
+		return new Promise((resolve, reject) => {
+	  		rp(requestOptions)
+				.then(response => {
+					if(option == '') {
+						resolve(response['data'][symbol]);
+					} else if (option == 'id' || option == 'name' || option == 'symbol' || option == 'slug' || option == 'circulating_supply' || option == 'total_supply' || option == 'max_supply' || option == 'date_added' || option == 'num_market_pairs' || option == 'tags' || option == 'platform' || option == 'cmc_rank' || option == 'last_updated') {
+						resolve(response['data'][symbol][option]);
+					} else if (option == 'quote') {
+						resolve(response['data'][symbol]['quote'][this.CURRENCY]);
+					} else if (option == 'price' || option == 'volume_24h' || option == 'percent_change_1h' || option == 'percent_change_24h' || option == 'percent_change_7d' || option == 'market_cap') {
+						resolve(response['data'][symbol]['quote'][this.CURRENCY][option]);
+					} else {
+						console.log('No such option (' + option + ').');
+					}
+				})
+				.catch(err => {
+					reject(err);
+				});
 		});
-	}
-
-	dumpData(data) {
-		// use your data here (format it, call your bot to send it to the server, etc.)
-		
-		if(this.LOG_API_RESPONSE) {
-			console.log(data);
-		}
 	}
 	
 }
 
-module.exports = cmc-api;
+module.exports = cmc_api;
 
 /* USE:
 	For getting multiple values at the same time, use options *none* or 'quote',
