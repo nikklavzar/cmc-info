@@ -7,7 +7,7 @@ Requests are asynchronous and use [promises](https://developer.mozilla.org/en-US
 
 How to use in your code: [see example](./example.js).
 
-For getting multiple values at the same time, use options *none* or 'quote',
+For getting multiple values at the same time, use [options](#requestcoin-argument-options) *none* or 'quote',
 this way you only need 1 API call for all values.
 For getting single values, you can use my pre-made function options.
 See usage below.
