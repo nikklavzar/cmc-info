@@ -2,20 +2,7 @@
 CoinMarketCap API
 > npm i cmc-info
 
-How to use in your code:
-```
-let cmc = new(require('./cmc-api.js'));
-
-cmc.requestCoin('BTC', '_option_') // replace _option_
-	.then(data => {
-		// use your data here
-		console.log(data);
-	})
-	.catch(error => {
-		// do whatever with errors here
-		console.error(error);
-	});
-```
+How to use in your code: [see example](./example.js).
 
 For getting multiple values at the same time, use options *none* or 'quote',
 this way you only need 1 API call for all values.
