@@ -1,4 +1,6 @@
 # CoinMarketCap API interface (cmc-info)
+Simple API interface for [CoinMarketCap's pro API](https://pro.coinmarketcap.com/).
+Requests are asynchronous and use [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). For simpler implementation, the [request-promise](https://www.npmjs.com/package/request-promise) module is used.
 
 # Installation & use
 > npm i cmc-info
