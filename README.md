@@ -1,6 +1,6 @@
 # CoinMarketCap API interface (cmc-info)
 
-# Installation
+# Installation & use
 > npm i cmc-info
 
 How to use in your code: [see example](./example.js).
@@ -10,7 +10,7 @@ this way you only need 1 API call for all values.
 For getting single values, you can use my pre-made function options.
 See usage below.
 
-# requestCoin options:
+# requestCoin argument options:
   - *none*
   ```
  { 
