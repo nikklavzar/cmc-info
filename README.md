@@ -1,5 +1,6 @@
 # CoinMarketCap API interface (cmc-info)
-CoinMarketCap API
+
+# Installation
 > npm i cmc-info
 
 How to use in your code: [see example](./example.js).
