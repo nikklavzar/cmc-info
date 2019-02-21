@@ -6,7 +6,7 @@ How to use in your code:
 ```
 let cmc = new(require('./cmc-api.js'));
 
-cmc.requestCoin('BTC', '_option_')
+cmc.requestCoin('BTC', '_option_') // replace _option_
 	.then(data => {
 		// use your data here
 		console.log(data);
