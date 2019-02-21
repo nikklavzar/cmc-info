@@ -13,7 +13,7 @@ For getting single values, you can use my pre-made function options.
 See usage below.
 
 # API key
-You can register and get a free API key [here](https://pro.coinmarketcap.com/account). There are also paid options for more advanced and commercial use.
+You can register and get a free API key [here](https://pro.coinmarketcap.com/account). There are also paid options for more advanced and commercial use. Set your key in [cmc-api.js](./cmc-api.js).
 
 # requestCoin argument options:
   - *none*
