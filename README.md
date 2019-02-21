@@ -2,6 +2,21 @@
 CoinMarketCap API
 > npm i cmc-info
 
+How to use in your code:
+```
+let cmc = new(require('./cmc-api.js'));
+
+cmc.requestCoin('BTC', '_option_')
+	.then(data => {
+		// use your data here
+		console.log(data);
+	})
+	.catch(error => {
+		// do whatever with errors here
+		console.error(error);
+	});
+```
+
 For getting multiple values at the same time, use options *none* or 'quote',
 this way you only need 1 API call for all values.
 For getting single values, you can use my pre-made function options.
@@ -10,7 +25,6 @@ See usage below.
 requestCoin options:
   - *none*
   ```
-EXAMPLE: requestCoin('BTC')
  { 
 		id: 1,
 		name: 'Bitcoin',
@@ -41,7 +55,6 @@ EXAMPLE: requestCoin('BTC')
 		
   - quote
 ```
-EXAMPLE: requestCoin('BTC', 'quote')
  { 
 		price: 3968.8811105,
 		volume_24h: 8872096540.73199,
@@ -71,8 +84,3 @@ EXAMPLE: requestCoin('BTC', 'quote')
   - percent_change_24h
   - percent_change_7d
   - market_cap
-  
-```
-EXAMPLE: requestCoin('BTC', 'total_supply')
-	> 17548650
-```
