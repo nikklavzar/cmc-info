@@ -7,13 +7,13 @@ Requests are asynchronous and use [promises](https://developer.mozilla.org/en-US
 
 How to use in your code: [see example](./example.js).
 
-# API key
-You can register and get a free API key [here](https://pro.coinmarketcap.com/account). There are also paid options for more advanced and commercial use.
-
 For getting multiple values at the same time, use options *none* or 'quote',
 this way you only need 1 API call for all values.
 For getting single values, you can use my pre-made function options.
 See usage below.
+
+# API key
+You can register and get a free API key [here](https://pro.coinmarketcap.com/account). There are also paid options for more advanced and commercial use.
 
 # requestCoin argument options:
   - *none*
