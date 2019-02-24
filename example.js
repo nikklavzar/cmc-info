@@ -1,5 +1,5 @@
-let cmc-api = require('./cmc-api.js');
-let cmc = new cmc-api('YOUR_API_KEY');
+let cmc_api = require('./cmc-api.js');
+let cmc = new cmc_api('YOUR_API_KEY');
 
 cmc.requestCoin('BTC', 'price')
 	.then(data => {
