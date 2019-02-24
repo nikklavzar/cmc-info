@@ -2,8 +2,8 @@ const rp = require('request-promise');
 
 class cmc_api {
 
-	constructor() {
-		this.API_KEY = 'YOUR_API_KEY'; // https://pro.coinmarketcap.com/account
+	constructor(api_key) {
+		this.API_KEY = api_key; // https://pro.coinmarketcap.com/account
 		this.API_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency'; // sandbox: https://sandbox.coinmarketcap.com/v1/cryptocurrency
 
 		this.CURRENCY = 'USD'; // https://pro.coinmarketcap.com/api/v1/#section/Standards-and-Conventions
