@@ -5,7 +5,7 @@ Requests are asynchronous and use [promises](https://developer.mozilla.org/en-US
 # Installation & use
 > npm i cmc-info
 
-How to use in your code: [see example](./example.js).
+How to use in your code: [see example](https://github.com/n3onis/cmc-info/example.js).
 
 For getting multiple values at the same time, use [options](#requestcoin-argument-options) *none* or 'quote',
 this way you only need 1 API call for all values.
