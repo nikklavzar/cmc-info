@@ -1,6 +1,6 @@
 {
   "author": {
-    "email": "nikklavzar@gmail.com",
+    "email": "nikklavzar@gmail.com"
   },
   "dependencies": {
     "request": "^2.88.0",
