@@ -1,21 +1,45 @@
+/* eslint-disable no-console */
+/* eslint-disable node/no-missing-require */
 const rp = require('request-promise');
 
 class cmc_api {
 
-	constructor(api_key) {
+	constructor(api_key, currency='USD') {
 		this.API_KEY = api_key; // https://pro.coinmarketcap.com/account
-		this.API_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency'; // sandbox: https://sandbox.coinmarketcap.com/v1/cryptocurrency
+		this.API_URL = 'https://pro-api.coinmarketcap.com/v1'; // sandbox: https://sandbox.coinmarketcap.com/v1
 
-		this.CURRENCY = 'USD'; // https://pro.coinmarketcap.com/api/v1/#section/Standards-and-Conventions
+		this.CURRENCY = currency; // https://pro.coinmarketcap.com/api/v1/#section/Standards-and-Conventions
 		this.DEFAULT_TOP_NUMBER = 10; // up to 100 coins ~ 1 API token
 		this.DEFAULT_OPTION = '';	// see options at the end of this file
 		this.LOG_API_RESPONSE = true; // log response data in console
 	}
 
-	requestTop(number=this.DEFAULT_TOP_NUMBER) {
+	requestGlobalMetrics() {
 		const requestOptions = {
 			method: 'GET',
-			uri: this.API_URL + '/listings/latest',
+			uri: this.API_URL + '/global-metrics/quotes/latest' + '&convert=' + this.CURRENCY,
+			headers: {
+				'X-CMC_PRO_API_KEY': this.API_KEY,
+			},
+			json: true,
+			gzip: true,
+		};
+
+		return new Promise((resolve, reject) => {
+			rp(requestOptions)
+				.then(response => {
+					resolve(response['data']);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
+
+	requestTopCoins(number=this.DEFAULT_TOP_NUMBER) {
+		const requestOptions = {
+			method: 'GET',
+			uri: this.API_URL + '/cryptocurrency/listings/latest',
 			qs: {
 				start: 1,
 				limit: number,
@@ -41,10 +65,10 @@ class cmc_api {
 
 	// don't use below function for a public group bot, it can eat up your API limit
 	// ... or change the limit (5000 is max.) so it works only for top X number of coins.
-	requestByCMCRank(rank=1) {
+	requestCoinByRank(rank=1) {
 		const requestOptions = {
 			method: 'GET',
-			uri: this.API_URL + '/listings/latest',
+			uri: this.API_URL + '/cryptocurrency/listings/latest',
 			qs: {
 				start: 1,
 				limit: 5000,
@@ -60,7 +84,7 @@ class cmc_api {
 		return new Promise((resolve, reject) => {
 			rp(requestOptions)
 				.then(response => {
-					resolve(response['data'][rank-1]);
+					resolve(response['data'][rank - 1]);
 				})
 				.catch(err => {
 					reject(err);
@@ -68,12 +92,12 @@ class cmc_api {
 		});
 	}
 
-	requestCoin(symbol='BTC', option=this.DEFAULT_OPTION) {
+	requestCoinBySymbol(symbol='BTC', option=this.DEFAULT_OPTION) {
 		symbol = symbol.toUpperCase();
 		option = option.toLowerCase();
 		const requestOptions = {
 			method: 'GET',
-			uri: this.API_URL + '/quotes/latest?symbol=' + symbol + '&convert=' + this.CURRENCY,
+			uri: this.API_URL + '/cryptocurrency/quotes/latest?symbol=' + symbol + '&convert=' + this.CURRENCY,
 			headers: {
 				'X-CMC_PRO_API_KEY': this.API_KEY,
 			},
@@ -82,7 +106,7 @@ class cmc_api {
 		};
 
 		return new Promise((resolve, reject) => {
-	  		rp(requestOptions)
+			rp(requestOptions)
 				.then(response => {
 					if(option == '') {
 						resolve(response['data'][symbol]);
