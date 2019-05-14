@@ -2,7 +2,7 @@
 Simple API interface for [CoinMarketCap's pro API](https://pro.coinmarketcap.com/).
 Requests are asynchronous and use [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). For simpler implementation, the [request-promise](https://www.npmjs.com/package/request-promise) module is used.
 
-# Commands
+# Functions
 `requestGlobalMetrics()`, `requestCoinBySymbol(symbol)`, `requestCoinByRank(rank)`, `requestTopCoins(number)` 
 
 # Installation & use
