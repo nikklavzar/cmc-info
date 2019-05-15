@@ -17,7 +17,10 @@ class cmc_api {
 	requestGlobalMetrics() {
 		const requestOptions = {
 			method: 'GET',
-			uri: this.API_URL + '/global-metrics/quotes/latest' + '&convert=' + this.CURRENCY,
+			uri: this.API_URL + '/global-metrics/quotes/latest',
+			qs: {
+				convert: this.CURRENCY,
+			},
 			headers: {
 				'X-CMC_PRO_API_KEY': this.API_KEY,
 			},

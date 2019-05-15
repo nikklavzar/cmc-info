@@ -15,10 +15,15 @@
   "optionalDependencies": {},
   "readme": "# CoinMarketCap API interface (cmc-info)\nSimple API interface for [CoinMarketCap's pro API](https://pro.coinmarketcap.com/).\nRequests are asynchronous and use [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). For simpler implementation, the [request-promise](https://www.npmjs.com/package/request-promise) module is used.\n\n# Installation & use\n> npm i cmc-info\n\nHow to use in your code: [see example](./example.js).\n\nFor getting multiple values at the same time, use [options](#requestcoin-argument-options) *none* or 'quote',\nthis way you only need 1 API call for all values.\nFor getting single values, you can use my pre-made function options.\nSee usage below.\n\n# API key\nYou can register and get a free API key [here](https://pro.coinmarketcap.com/account). There are also paid options for more advanced and commercial use. Set your key in [cmc-api.js](./cmc-api.js).\n\n# requestCoin argument options:\n  - *none*\n  ```\n { \n\t\tid: 1,\n\t\tname: 'Bitcoin',\n\t\tsymbol: 'BTC',\n\t\tslug: 'bitcoin',\n\t\tcirculating_supply: 17548650,\n\t\ttotal_supply: 17548650,\n\t\tmax_supply: 21000000,\n\t\tdate_added: '2013-04-28T00:00:00.000Z',\n\t\tnum_market_pairs: 6643,\n\t\ttags: [ 'mineable' ],\n\t\tplatform: null,\n\t\tcmc_rank: 1,\n\t\tlast_updated: '2019-02-20T14:25:27.000Z',\n\t\tquote:\n\t\t\t{ USD:\n\t\t\t\t{ \tprice: 3967.45596071,\n\t\t\t\t\tvolume_24h: 8870574483.8468,\n\t\t\t\t\tpercent_change_1h: -0.558352,\n\t\t\t\t\tpercent_change_24h: -0.290679,\n\t\t\t\t\tpercent_change_7d: 9.24773,\n\t\t\t\t\tmarket_cap: 69623496044.91354,\n\t\t\t\t\tlast_updated: '2019-02-20T14:25:27.000Z'\n\t\t\t\t}\n\t\t\t} \n }\n```\n\t\t\n  - quote\n```\n { \n\t\tprice: 3968.8811105,\n\t\tvolume_24h: 8872096540.73199,\n\t\tpercent_change_1h: -0.522632,\n\t\tpercent_change_24h: -0.254862,\n\t\tpercent_change_7d: 9.28697,\n\t\tmarket_cap: 69648505499.77582,\n\t\tlast_updated: '2019-02-20T14:24:26.000Z'\n }\n```\n  - id\n  - name\n  - symbol\n  - slug\n  - circulating_supply\n  - total_supply\n  - max_supply\n  - date_added\n  - num_market_pairs\n  - tags\n  - platform\n  - cmc_rank\n  - last_updated\n  - price\n  - volume_24h\n  - percent_change_1h\n  - percent_change_24h\n  - percent_change_7d\n  - market_cap\n",
   "readmeFilename": "README.md",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/n3onis/cmc-info.git"
+    "type": "git",
+    "url": "https://github.com/n3onis/cmc-info.git"
   },
-  "keywords": ["cmc","api","coinmarketcap","cryptocurrency"]
+  "keywords": [
+    "cmc",
+    "api",
+    "coinmarketcap",
+    "cryptocurrency"
+  ]
 }
